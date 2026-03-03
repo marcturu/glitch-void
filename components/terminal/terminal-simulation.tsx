@@ -77,7 +77,7 @@ const LOG_MESSAGES: Record<LogType, string[]> = {
   
 const COMMANDS: Record<string, string[]> = {
   stop: ["__stop__"],
-  help:   ["Available commands: help, ls, whoami, status, clear, exit, ping, ps, pwd, uname.", "Type stop to halt the hacking."],
+  help:   ["Available commands: help, ls, whoami, status, clear, exit, ping, ps, pwd, uname.", "Type 'stop' to halt the hacking."],
   ls:     ["bin/  dev/  etc/  proc/  sys/  usr/  var/  tmp/"],
   whoami: ["root"],
   status: ["system status: DEGRADED — 3 critical processes unresponsive"],
@@ -389,13 +389,22 @@ export function TerminalSimulation() {
                 key={log.id}
                 type={log.type}
                 message={log.message}
-                duration={elapsed < 20 ? 2000 : elapsed < 45 ? 3000 : 5000}
+                duration={elapsed < 15 ? 2000 : elapsed < 25 ? 3000 : 5000}
                 intensity={intensity}
                 vibrate={shouldVibrate}
                 persist={persistLogs}
                 onFadeOut={() => handleLogFadeOut(log.id)}
               />
             ))}
+
+            {phase >= 3 && !halted && userHistory.length === 0 && (
+              <div
+                className="text-neon-green/20 text-xs tracking-widest select-none mt-2"
+                style={{ animation: "log-fade-in 1s ease-out 1s both" }}
+              >
+                Maybe you need some <span className="text-neon-green/40">"help"</span>
+              </div>
+            )}
 
             {inputBlock}
           </div>
@@ -430,6 +439,7 @@ export function TerminalSimulation() {
 
       {/* Progress indicator */}
       <div className="fixed bottom-4 right-4 z-30 text-muted-foreground/30 text-xs font-mono select-none">
+        <p>© 2026 <a href="https://github.com/marcturu" target="_blank">Marc Turu Roca</a></p>
         {Math.floor(elapsed)}s / 40s
       </div>
     </main>

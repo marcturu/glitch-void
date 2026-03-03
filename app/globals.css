@@ -82,6 +82,16 @@
   body {
     @apply bg-background text-foreground;
   }
+  a {
+    color: var(--color-foreground);
+    text-decoration: none;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--neon-green);
+    text-shadow: 0 0 8px var(--neon-green), 0 0 16px var(--neon-green);
+  }
 }
 
 /* CRT scanline overlay */
