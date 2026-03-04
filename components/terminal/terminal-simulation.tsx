@@ -374,6 +374,7 @@ export function TerminalSimulation() {
           <div
             className="flex h-full items-center">
             {inputBlock}
+            <img src="/GlitchVoid.png" alt="Glitch Void" className="absolute top-1/2 left-1/2 w-48 h-48 object-contain -translate-x-1/2 -translate-y-1/2 pointer-events-none fade-out"/>
           </div>
         )}
 
@@ -438,9 +439,21 @@ export function TerminalSimulation() {
       </div>
 
       {/* Progress indicator */}
-      <div className="fixed bottom-4 right-4 z-30 text-muted-foreground/30 text-xs font-mono select-none">
+      <div className="fixed bottom-4 right-4 z-30 text-muted-foreground/30 text-xs font-mono select-none flex flex-col items-end gap-2">
+        <a
+          href="https://github.com/marcturu/glitch-void" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="transition-transform duration-300 ease-in-out hover:scale-105 hover:opacity-80"
+        >
+          <img 
+            src="/GlitchVoid.png" 
+            alt="Glitch Void" 
+            className="h-10 w-auto" 
+          />
+        </a>
+        {Math.floor(elapsed)}s / 40s   
         <p>© 2026 <a href="https://github.com/marcturu" target="_blank">Marc Turu Roca</a></p>
-        {Math.floor(elapsed)}s / 40s
       </div>
     </main>
   )

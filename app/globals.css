@@ -92,6 +92,11 @@
     color: var(--neon-green);
     text-shadow: 0 0 8px var(--neon-green), 0 0 16px var(--neon-green);
   }
+
+  .fade-out {
+    opacity: 1;
+    animation: fadeOut 5s linear forwards;
+  }
 }
 
 /* CRT scanline overlay */
@@ -166,4 +171,9 @@
   55%  { opacity: 1; transform: scaleY(0.01) scaleX(1.1); filter: brightness(3); }
   80%  { opacity: 1; transform: scaleY(0.01) scaleX(0.2); filter: brightness(2); }
   100% { opacity: 0; transform: scaleY(0) scaleX(0); }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
