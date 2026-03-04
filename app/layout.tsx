@@ -9,24 +9,23 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Terminal // System Process',
+  title: 'Glitch Void',
   description: 'A retro terminal simulation that evolves and collapses over time.',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/GlitchVoid-32x32.png',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/GlitchVoid-32x32.png',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: '/favicon.ico', 
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/apple-touch-icon.png',
   },
 }
 
