@@ -95,7 +95,7 @@
 
   .fade-out {
     opacity: 1;
-    animation: fadeOut 5s linear forwards;
+    animation: fadeOut 3s linear forwards;
   }
 }
 
