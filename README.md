@@ -6,3 +6,34 @@
 1. `git clone https://github.com/marcturu/glitch-void.git` to clone the repo.
 2. `$ npm install` to install dependencies.
 3. `$ npm run dev ` to test the web locally.
+
+```
+├── 📁 app
+│   ├── 🎨 globals.css
+│   ├── 📄 layout.tsx
+│   └── 📄 page.tsx
+├── 📁 components
+│   ├── 📁 terminal
+│   │   ├── 📄 binary-rain.tsx
+│   │   ├── 📄 cursor.tsx
+│   │   ├── 📄 log-line.tsx
+│   │   ├── 📄 scanlines.tsx
+│   │   └── 📄 terminal-simulation.tsx
+│   ├── 📁 ui
+│   └── 📄 theme-provider.tsx
+├── 📁 hooks
+│   ├── 📄 use-mobile.ts
+│   └── 📄 use-toast.ts
+├── 📁 lib
+│   └── 📄 utils.ts
+├── 📁 public
+├── ⚙️ .gitignore
+├── 📝 README.md
+├── ⚙️ components.json
+├── 📄 next-env.d.ts
+├── 📄 next.config.mjs
+├── ⚙️ package-lock.json
+├── ⚙️ package.json
+├── 📄 postcss.config.mjs
+└── ⚙️ tsconfig.json
+```
