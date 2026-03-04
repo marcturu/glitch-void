@@ -398,12 +398,12 @@ export function TerminalSimulation() {
               />
             ))}
 
-            {phase >= 3 && !halted && userHistory.length === 0 && (
+            {phase >= 3 && !halted && userHistory.every(u => u.command !== "help")/*userHistory.length === 0*/ && (
               <div
                 className="text-neon-green/20 text-xs tracking-widest select-none mt-2"
                 style={{ animation: "log-fade-in 1s ease-out 1s both" }}
               >
-                Maybe you need some <span className="text-neon-green/40">"help"</span>
+                Maybe you need some <span className="text-neon-green/75">"help"</span>
               </div>
             )}
 
