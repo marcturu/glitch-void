@@ -439,7 +439,7 @@ export function TerminalSimulation() {
       </div>
 
       {/* Progress indicator */}
-      <div className="fixed bottom-4 right-4 z-30 text-muted-foreground/30 text-xs font-mono select-none flex flex-col items-end gap-2">
+      <div className="fixed bottom-4 right-4 md:right-8 z-30 text-muted-foreground/30 text-xs font-mono select-none flex flex-col items-end gap-2">
         <a
           href="https://github.com/marcturu/glitch-void" 
           target="_blank" 
