@@ -1,4 +1,4 @@
-# <img src="public/GlitchVoid.png" alt="GlitchVoid" width="250"/> — Your terminal is dying. Can you save it?
+# <img src="public/GlitchVoid.png" alt="GlitchVoid" width="225"/> — Your terminal is dying. Can you save it?
 
 ![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black?logo=next.js)
 ![React](https://img.shields.io/badge/React-19.2.4-61DAFB?logo=react)
