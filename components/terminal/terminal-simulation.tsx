@@ -428,7 +428,7 @@ export function TerminalSimulation() {
               />
             ))}
 
-            {phase >= 3 && !halted && userHistory.every(u => u.command !== "help")/*userHistory.length === 0*/ && (
+            {phase >= 4 && !showOverlay && !halted && userHistory.every(u => u.command !== "help") && (
               <div
                 className="text-neon-green/20 text-xs tracking-widest select-none mt-2"
                 style={{ animation: "log-fade-in 1s ease-out 1s both" }}
