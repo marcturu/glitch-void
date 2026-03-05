@@ -125,8 +125,8 @@ export function TerminalSimulation() {
   const [userHistory, setUserHistory] = useState<{ command: string; response: string[] }[]>([])
   const inputRef = useRef<HTMLInputElement>(null)
   const [stopped, setStopped] = useState(false)
-
   const stoppedRef = useRef(false)
+  const [showOverlay, setShowOverlay] = useState(false)
 
   // Elapsed time tracker
   useEffect(() => {
@@ -198,9 +198,16 @@ export function TerminalSimulation() {
       setFinalFade(true)
       const timer = setTimeout(() => {
         setLogs([])
+        setShowOverlay(true)
+      }, 500) // First, TV off animation
+      const haltTimer = setTimeout(() => {
+        setShowOverlay(false)
         setHalted(true)
-      }, 500)
-      return () => clearTimeout(timer)
+      }, 2500) // Second, halt
+      return () => {
+        clearTimeout(timer)
+        clearTimeout(haltTimer)
+      }
     }
   }, [elapsed, halted])
 
@@ -285,7 +292,7 @@ export function TerminalSimulation() {
   return (
     <main
       className="relative w-screen h-screen overflow-hidden font-mono"
-      style={bgStyle}
+      style={halted || showOverlay ? { background: "#000000" } : bgStyle}
     >
       <Scanlines />
 
@@ -316,17 +323,14 @@ export function TerminalSimulation() {
       )}
 
       {/* Efecto apagado TV */}
-      {halted && (
+      {showOverlay && (
         <div
           className="fixed inset-0 z-50 bg-white"
-          style={{
-            animation: "screen-off 1s ease-in 0.5s both",
-            transformOrigin: "center center",
-          }}
+          style={{ animation: "screen-off 1s ease-in 0.5s both" }}
         />
       )}
 
-      {phase >= 5 && !halted && (
+      {phase >= 5 && !showOverlay && !halted && (
         <div
           className="fixed inset-0 z-10 pointer-events-none"
           style={{ animation: "glitch-flicker 0.2s infinite" }}
@@ -345,12 +349,12 @@ export function TerminalSimulation() {
       )}
 
       {/* Binary rain in phase >= 4 */}
-      {phase >= 3 && !halted && (
+      {phase >= 3 && !showOverlay && !halted && (
         <BinaryRain opacity={glitchImageOpacity} />
       )}
 
       {/* Blur overlay */}
-      {phase >= 3 && (
+      {phase >= 3 && !showOverlay && !halted && (
         <div
           className="pointer-events-none fixed inset-0 z-10"
           style={{
@@ -360,6 +364,32 @@ export function TerminalSimulation() {
           aria-hidden="true"
         />
       )}
+
+      {/* System halted */}
+        {halted && (
+          <div className="fixed inset-0 z-20 flex flex-col items-center justify-center h-full gap-3">
+            <div
+              className="text-neon-green/90 text-xs tracking-widest text-center"
+              style={{
+                animation: "log-fade-in 0.5s ease-out forwards",
+                textShadow: "0 0 8px var(--neon-green)",
+              }}
+            >
+              <div>KERNEL PANIC - not syncing: Fatal exception</div>
+              <div className="mt-1 opacity-60">CPU: 0 PID: 1 Comm: init</div>
+              <div className="opacity-60">hardware name: UNKNOWN</div>
+            </div>
+            <div
+              className="text-neon-green/80 text-lg tracking-widest mt-4"
+              style={{
+                animation: "log-fade-in 1s ease-out 0.8s both",
+                textShadow: "0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 40px var(--neon-green)",
+              }}
+            >
+              System halted.
+            </div>
+          </div>
+        )}
 
       {/* Terminal content */}
       <div
@@ -411,31 +441,6 @@ export function TerminalSimulation() {
           </div>
         )}
 
-        {/* System halted */}
-        {halted && (
-          <div className="flex flex-col items-center justify-center h-full gap-3">
-            <div
-              className="text-neon-green/90 text-xs tracking-widest text-center"
-              style={{
-                animation: "log-fade-in 0.5s ease-out forwards",
-                textShadow: "0 0 8px var(--neon-green)",
-              }}
-            >
-              <div>KERNEL PANIC - not syncing: Fatal exception</div>
-              <div className="mt-1 opacity-60">CPU: 0 PID: 1 Comm: init</div>
-              <div className="opacity-60">hardware name: UNKNOWN</div>
-            </div>
-            <div
-              className="text-neon-green/80 text-lg tracking-widest mt-4"
-              style={{
-                animation: "log-fade-in 1s ease-out 0.8s both",
-                textShadow: "0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 40px var(--neon-green)",
-              }}
-            >
-              System halted.
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Progress indicator */}
