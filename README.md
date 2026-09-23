@@ -100,12 +100,3 @@ Visit: [https://glitch-void.vercel.app/](https://glitch-void.vercel.app/)
 
 ### Gameplay (Mobile):
 ![Mobile(Gameplay)](screenshots/Mobile_Gameplay.png)
-
----
-
-## ⚖️ Copyright & License
-
-© 2026 Marc Turu Roca. All rights reserved.
-
-This project and its contents are the exclusive intellectual property of Marc Turu Roca.  
-All rights reserved. No part of this project may be copied, modified, distributed, or used without prior written permission from the author.
