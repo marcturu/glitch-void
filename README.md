@@ -72,13 +72,7 @@ Visit: [https://glitch-void.vercel.app/](https://glitch-void.vercel.app/)
 │   │   ├── 📄 log-line.tsx                ← Individual animated log entries
 │   │   ├── 📄 scanlines.tsx               ← CRT scanline overlay effect
 │   │   └── 📄 terminal-simulation.tsx     ← Core simulation logic & orchestration
-│   ├── 📁 ui
 │   └── 📄 theme-provider.tsx
-├── 📁 hooks
-│   ├── 📄 use-mobile.ts
-│   └── 📄 use-toast.ts
-├── 📁 lib
-│   └── 📄 utils.ts
 ├── 📁 public
 ├── ⚙️ .gitignore
 ├── 📝 README.md
